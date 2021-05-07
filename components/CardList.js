@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { FlatList, StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import React from 'react';
+import { FlatList, StyleSheet, Text, View, SafeAreaView, Image} from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
 
 import Card from './Card';
 
-const RenderRight = () => {
+const RenderRightAction = () => {
   return (
-    <View style={{marginRight: 40, alignItems: "flex-end", justifyContent: 'center', width: '85%', height: 100}}>
+    <View style={styles.renderRight}>
       <Text>🗑️</Text>
     </View>
   )
@@ -19,7 +19,7 @@ const RenderItem = ({item, deleteItem}) => {
       overshootLeft={false} 
       overshootRight={false} 
       onSwipeableRightOpen={() => deleteItem(item.id)} 
-      renderRightActions={RenderRight}>
+      renderRightActions={RenderRightAction}>
       <Card
         image={item.image}
         name={item.name}
@@ -34,8 +34,6 @@ export default function CardList(props) {
   const deleteItem = (id) => {
     const temp = data.filter(item => item.id !== id);
     const deletedItem = data.filter(item => item.id === id);
-    console.log(temp)
-    console.log(deletedItem)
     setPhilosopherList(temp);
     setInitialPhilosopherData([...initialPhilosopherData, deletedItem[0]]);
   }
@@ -45,10 +43,10 @@ export default function CardList(props) {
     <View style={styles.container}>
       <SafeAreaView />
       <FlatList 
-        contentContainerStyle={{flex: 1}} 
         data={data} 
         ListEmptyComponent={() => (
-          <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <View style={styles.emptyComponent}>
+            <Image source={require('../assets/empty-img.png')} style={styles.image}/>
             <Text>Add some philosophers!</Text>
           </View>
         )}
@@ -64,4 +62,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#f7f7f7',
     justifyContent: 'center',
   },
+  renderRight: {
+    marginRight: 40,
+    alignItems: "flex-end",
+    justifyContent: 'center',
+    width: '85%',
+    height: 100
+  },
+  emptyComponent: {
+    flex: 1,
+    justifyContent:'center',
+    alignItems: 'center',
+    paddingTop: 200
+  },
+  image: {
+    width: 200,
+    height: 200,
+    marginBottom: 30
+  }
+
 });

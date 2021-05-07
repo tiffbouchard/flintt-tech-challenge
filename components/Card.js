@@ -3,8 +3,9 @@ import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 
 export default function Card(props) {
   const { onPress, image, name } = props;
+  
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={1} onLongPress={() => {alert("press")}}>
+    <TouchableOpacity onPress={onPress} activeOpacity={1}>
       <View style={styles.container}>
         <Image 
           source={{ uri: image }}

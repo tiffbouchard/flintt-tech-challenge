@@ -4,14 +4,14 @@ import { StyleSheet, SafeAreaView, Platform, StatusBar } from 'react-native';
 
 import CustomButton from './components/Button';
 import CardList from './components/CardList';
-import philosopherData from './data/philosophers.json';
+import seedData from './data/philosophers.json';
 
 export default function App() {
   const [ philosopherList, setPhilosopherList ] = useState([]);
   const [ initialPhilosopherData, setInitialPhilosopherData ] = useState([]);
 
   useEffect(() => {
-    setInitialPhilosopherData(philosopherData)
+    setInitialPhilosopherData(seedData)
   }, []);
 
   const handleTap = () => {
@@ -52,6 +52,5 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: 'black',
-    color: 'black',
   },
 });
