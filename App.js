@@ -33,6 +33,8 @@ export default function App() {
         <CardList
           data={philosopherList}
           setPhilosopherList={setPhilosopherList}
+          setInitialPhilosopherData={setInitialPhilosopherData}
+          initialPhilosopherData={initialPhilosopherData}
         />
       <DevStatusBar style="auto" />
     </SafeAreaView>

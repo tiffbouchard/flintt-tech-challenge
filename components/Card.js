@@ -2,15 +2,15 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 
 export default function Card(props) {
-
+  const { onPress, image, name } = props;
   return (
-    <TouchableOpacity onPress={props.onPress} activeOpacity={0.9} onLongPress={() => {alert("press")}}>
+    <TouchableOpacity onPress={onPress} activeOpacity={1} onLongPress={() => {alert("press")}}>
       <View style={styles.container}>
         <Image 
-          source={{ uri: props.image }}
+          source={{ uri: image }}
           style={styles.image}  
         />
-        <Text style={styles.text}>{props.name}</Text>
+        <Text style={styles.text}>{name}</Text>
       </View>
     </TouchableOpacity>
   );

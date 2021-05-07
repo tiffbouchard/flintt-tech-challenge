@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlatList, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
 
@@ -6,7 +6,7 @@ import Card from './Card';
 
 const RenderRight = () => {
   return (
-    <View style={{marginRight: 35, alignItems: "center", justifyContent: 'center'}}>
+    <View style={{marginRight: 40, alignItems: "flex-end", justifyContent: 'center', width: '85%', height: 100}}>
       <Text>🗑️</Text>
     </View>
   )
@@ -29,11 +29,15 @@ const RenderItem = ({item, deleteItem}) => {
 } 
 
 export default function CardList(props) {
-  const { data, setPhilosopherList } = props;
+  const { data, setPhilosopherList, setInitialPhilosopherData, initialPhilosopherData } = props;
 
   const deleteItem = (id) => {
     const temp = data.filter(item => item.id !== id);
+    const deletedItem = data.filter(item => item.id === id);
+    console.log(temp)
+    console.log(deletedItem)
     setPhilosopherList(temp);
+    setInitialPhilosopherData([...initialPhilosopherData, deletedItem[0]]);
   }
 
 
