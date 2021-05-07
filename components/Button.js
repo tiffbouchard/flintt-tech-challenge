@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 export default function CustomButton(props) {
-  const { title } = props; 
+  const { title, handleTap } = props; 
 
   return (
-    <TouchableOpacity activeOpacity={0.85} onPress={() => alert("pressed")} style={styles.buttonContainer}>
+    <TouchableOpacity activeOpacity={0.85} onPress={handleTap} style={styles.buttonContainer}>
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );
