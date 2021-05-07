@@ -1,17 +1,18 @@
-import { StatusBar as DevStatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button, Platform, StatusBar, Image} from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 
 export default function Card(props) {
 
   return (
-    <View style={styles.container}>
-      <Image 
-        source={{ uri: props.image }}
-        style={styles.image}  
-      />
-      <Text style={styles.text}>{props.name}</Text>
-    </View>
+    <TouchableOpacity onPress={props.onPress} activeOpacity={0.9} onLongPress={() => {alert("press")}}>
+      <View style={styles.container}>
+        <Image 
+          source={{ uri: props.image }}
+          style={styles.image}  
+        />
+        <Text style={styles.text}>{props.name}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
